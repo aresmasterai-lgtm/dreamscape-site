@@ -706,13 +706,12 @@
     <div class="waitlist-form" id="waitlist-form">
       <h3>Join the Waitlist</h3>
       <p>Be among the first to access Dreamscape when we launch</p>
-      <form name="waitlist" method="POST" data-netlify="true" onsubmit="handleWaitlistSubmit(event)">
+      <form name="waitlist" method="POST" data-netlify="true" action="/thank-you.html">
         <input type="hidden" name="form-name" value="waitlist">
         <div class="form-row">
           <input type="email" name="email" placeholder="your@email.com" required>
           <button type="submit">Join Now</button>
         </div>
-        <div class="form-success" id="waitlist-success">✨ You're on the list! Check your email for updates.</div>
       </form>
     </div>
 
@@ -933,7 +932,7 @@
       <h2 style="font-family: 'Playfair Display', serif; font-size: 32px; color: var(--text); margin-bottom: 12px; text-align: center;">Get in Touch</h2>
       <p style="text-align: center; color: var(--muted); margin-bottom: 32px;">Have questions? Want to partner? We'd love to hear from you.</p>
       
-      <form name="contact" method="POST" data-netlify="true" onsubmit="handleContactSubmit(event)">
+      <form name="contact" method="POST" data-netlify="true" action="/thank-you.html">
         <input type="hidden" name="form-name" value="contact">
         <div style="margin-bottom: 16px;">
           <input type="text" name="name" placeholder="Your Name" required style="width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; color: var(--text); font-size: 14px; outline: none;">
@@ -945,7 +944,6 @@
           <textarea name="message" placeholder="Your Message" required rows="5" style="width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; color: var(--text); font-size: 14px; outline: none; resize: vertical; font-family: 'DM Sans', sans-serif;"></textarea>
         </div>
         <button type="submit" style="width: 100%; background: linear-gradient(135deg, var(--accent), #5B3FDB); border: none; border-radius: 12px; padding: 14px; color: #fff; font-size: 15px; font-weight: 600; cursor: pointer;">Send Message</button>
-        <div class="form-success" id="contact-success" style="margin-top: 16px;">✨ Message sent! We'll get back to you soon.</div>
       </form>
     </div>
   </div>
@@ -985,58 +983,6 @@
   </footer>
 
   <script>
-    // Waitlist form handler
-    function handleWaitlistSubmit(e) {
-      e.preventDefault();
-      const form = e.target;
-      const formData = new FormData(form);
-      
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-      })
-      .then(() => {
-        document.getElementById('waitlist-success').style.display = 'block';
-        form.reset();
-        
-        // Track with Google Analytics
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'waitlist_signup', {
-            'event_category': 'engagement',
-            'event_label': 'Waitlist Form'
-          });
-        }
-      })
-      .catch(error => console.error('Error:', error));
-    }
-
-    // Contact form handler
-    function handleContactSubmit(e) {
-      e.preventDefault();
-      const form = e.target;
-      const formData = new FormData(form);
-      
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-      })
-      .then(() => {
-        document.getElementById('contact-success').style.display = 'block';
-        form.reset();
-        
-        // Track with Google Analytics
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'contact_form_submit', {
-            'event_category': 'engagement',
-            'event_label': 'Contact Form'
-          });
-        }
-      })
-      .catch(error => console.error('Error:', error));
-    }
-
     // Smooth scroll for internal links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
