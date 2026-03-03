@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dreamscape - Where artists create stunning AI artwork and sell globally through Printful. Join our creative community.">
+  <meta name="keywords" content="AI art, artist platform, Printful, digital art marketplace, AI image generation">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://trydreamscape.com">
+  <meta property="og:title" content="Dreamscape - Where Artists Create & Thrive">
+  <meta property="og:description" content="Generate stunning artwork with AI, build your artist profile, join community channels, and sell merchandise globally.">
+  <meta property="og:image" content="https://trydreamscape.com/og-image.png">
+  
+  <title>Dreamscape - AI Art Social Platform</title>
+  <link rel="canonical" href="https://trydreamscape.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #080B14;
+      --surface: #0E1220;
+      --surface-alt: #131826;
+      --border: #1E2438;
+      --accent: #7C5CFC;
+      --gold: #F5C842;
+      --coral: #FF6B6B;
+      --teal: #00D4AA;
+      --pink: #FF4FA0;
+      --text: #E8EAF0;
+      --muted: #6B7494;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    @keyframes pulse {
+      from { transform: scale(1); opacity: 0.4; }
+      to { transform: scale(1.15); opacity: 0.7; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(124, 92, 252, 0.27); }
+      50% { box-shadow: 0 0 40px rgba(124, 92, 252, 0.53); }
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8, 11, 20, 0.87);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      height: 68px;
+      gap: 28px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: 20px;
+      cursor: pointer;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), #5B3FDB);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      animation: glow 3s ease-in-out infinite;
+    }
+
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--text);
+    }
+
+    .logo-text .accent { color: var(--accent); }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .nav-btn:hover { color: var(--text); }
+    .nav-btn.active { color: var(--text); border-bottom-color: var(--accent); }
+    
+    .nav-badge {
+      background: var(--teal);
+      color: #fff;
+      border-radius: 10px;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 6px;
+    }
+
+    .nav-actions {
+      margin-left: auto;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #5B3FDB);
+      border: none;
+      border-radius: 10px;
+      padding: 10px 18px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(124, 92, 252, 0.27);
+    }
+
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), #E09020);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 100px 40px 80px;
+      animation: fadeUp 0.8s ease both;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(124, 92, 252, 0.13);
+      border: 1px solid rgba(124, 92, 252, 0.27);
+      border-radius: 20px;
+      padding: 6px 18px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(48px, 7vw, 88px);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent), var(--teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+
+    .btn-hero-primary {
+      background: linear-gradient(135deg, var(--accent), #5B3FDB);
+      border: none;
+      border-radius: 14px;
+      padding: 16px 32px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(124, 92, 252, 0.33);
+    }
+
+    .btn-hero-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 32px;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Waitlist Form */
+    .waitlist-form {
+      max-width: 480px;
+      margin: 0 auto 40px;
+      background: rgba(124, 92, 252, 0.07);
+      border: 1px solid rgba(124, 92, 252, 0.2);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .waitlist-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .waitlist-form p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .waitlist-form input {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: var(--text);
+      font-size: 14px;
+      outline: none;
+    }
+
+    .waitlist-form input:focus {
+      border-color: var(--accent);
+    }
+
+    .waitlist-form button {
+      background: linear-gradient(135deg, var(--accent), #5B3FDB);
+      border: none;
+      border-radius: 10px;
+      padding: 12px 24px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .form-success {
+      display: none;
+      background: rgba(0, 212, 170, 0.13);
+      border: 1px solid rgba(0, 212, 170, 0.27);
+      border-radius: 10px;
+      padding: 12px;
+      margin-top: 12px;
+      color: var(--teal);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .stats {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--text);
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Printful Section */
+    .printful-banner {
+      margin: 0 40px 60px;
+      background: linear-gradient(135deg, rgba(0, 212, 170, 0.13), rgba(124, 92, 252, 0.07));
+      border: 1px solid rgba(0, 212, 170, 0.27);
+      border-radius: 20px;
+      padding: 24px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .printful-content {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .printful-icon { font-size: 36px; }
+
+    .printful-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .printful-desc {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .printful-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: rgba(0, 212, 170, 0.13);
+      border: 1px solid rgba(0, 212, 170, 0.2);
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-size: 12px;
+      color: var(--teal);
+    }
+
+    /* Products Grid */
+    .section {
+      padding: 0 40px 80px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .section-link {
+      color: var(--accent);
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .product-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(124, 92, 252, 0.33);
+      box-shadow: 0 16px 32px rgba(124, 92, 252, 0.13);
+    }
+
+    .product-image {
+      height: 160px;
+      background: linear-gradient(135deg, rgba(124, 92, 252, 0.13), var(--surface-alt));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .product-emoji {
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(124, 92, 252, 0.4), rgba(124, 92, 252, 0.2));
+      border: 1px solid rgba(124, 92, 252, 0.33);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .product-info {
+      padding: 14px 16px;
+    }
+
+    .product-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .product-meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .product-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .btn-cart {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-cart:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* Artist Grid */
+    .artist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .artist-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .artist-card:hover {
+      background: var(--surface-alt);
+      border-color: rgba(124, 92, 252, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(124, 92, 252, 0.13);
+    }
+
+    .artist-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .artist-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), rgba(124, 92, 252, 0.53));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: #fff;
+      border: 2px solid rgba(124, 92, 252, 0.27);
+    }
+
+    .artist-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    .artist-handle {
+      color: var(--accent);
+      font-size: 12px;
+      font-family: monospace;
+    }
+
+    .artist-stats {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .artist-stat {
+      text-align: center;
+    }
+
+    .artist-stat-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .artist-stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .artist-style {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .btn-follow {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-follow:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 60px 40px 40px;
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-section h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .footer-section a {
+      display: block;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; gap: 16px; }
+      .section { padding: 0 20px 60px; }
+      .hero { padding: 60px 20px 60px; }
+      .nav-btn span { display: none; }
+      footer { padding: 40px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">
+      <div class="logo-icon">✦</div>
+      <div class="logo-text">Dream<span class="accent">scape</span></div>
+    </div>
+    <button class="nav-btn active">Discover</button>
+    <button class="nav-btn">Channels</button>
+    <button class="nav-btn">Marketplace</button>
+    <button class="nav-btn">Create <span class="nav-badge">NEW</span></button>
+    <button class="nav-btn">Community</button>
+    <div class="nav-actions">
+      <button class="btn-primary" onclick="document.getElementById('waitlist-form').scrollIntoView({behavior:'smooth'})">Join Waitlist</button>
+      <div class="user-avatar">?</div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge">Artist Social Media · AI Creation · Global Marketplace</div>
+    <h1>
+      Where Artists<br>
+      <span class="gradient-text">Create & Thrive</span>
+    </h1>
+    <p>Generate stunning artwork with AI, build your artist profile, join community channels, and sell merchandise globally through Printful.</p>
+    
+    <!-- Waitlist Form -->
+    <div class="waitlist-form" id="waitlist-form">
+      <h3>Join the Waitlist</h3>
+      <p>Be among the first to access Dreamscape when we launch</p>
+      <form name="waitlist" method="POST" data-netlify="true" onsubmit="handleWaitlistSubmit(event)">
+        <input type="hidden" name="form-name" value="waitlist">
+        <div class="form-row">
+          <input type="email" name="email" placeholder="your@email.com" required>
+          <button type="submit">Join Now</button>
+        </div>
+        <div class="form-success" id="waitlist-success">✨ You're on the list! Check your email for updates.</div>
+      </form>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value">10K+</div>
+        <div class="stat-label">Artists</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">50K+</div>
+        <div class="stat-label">Products</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">120+</div>
+        <div class="stat-label">Channels</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">150+</div>
+        <div class="stat-label">Countries</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Printful Banner -->
+  <div class="printful-banner">
+    <div class="printful-content">
+      <div class="printful-icon">🔗</div>
+      <div>
+        <div class="printful-title">Powered by Printful API</div>
+        <div class="printful-desc">300+ on-demand products · Global fulfillment · No inventory needed</div>
+      </div>
+    </div>
+    <div class="printful-tags">
+      <span class="tag">T-Shirts</span>
+      <span class="tag">Hoodies</span>
+      <span class="tag">Posters</span>
+      <span class="tag">Mugs</span>
+      <span class="tag">Phone Cases</span>
+      <span class="tag">+290 more</span>
+    </div>
+  </div>
+
+  <!-- Products -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">Marketplace</div>
+      <div class="section-link">View All →</div>
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-emoji">👕</div>
+          <div class="product-tag">AI Generated</div>
+        </div>
+        <div class="product-info">
+          <div class="product-title">Nebula Drift Tee</div>
+          <div class="product-meta">by Luna Voss · Apparel</div>
+          <div class="product-footer">
+            <div class="product-price">$42</div>
+            <button class="btn-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-emoji">🖼️</div>
+          <div class="product-tag">Trending</div>
+        </div>
+        <div class="product-info">
+          <div class="product-title">Sacred Grid Poster</div>
+          <div class="product-meta">by Kai Mercer · Print</div>
+          <div class="product-footer">
+            <div class="product-price">$28</div>
+            <button class="btn-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-emoji">🧥</div>
+          <div class="product-tag">New</div>
+        </div>
+        <div class="product-info">
+          <div class="product-title">Ancestral Hoodie</div>
+          <div class="product-meta">by Zara Osei · Apparel</div>
+          <div class="product-footer">
+            <div class="product-price">$78</div>
+            <button class="btn-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-emoji">☕</div>
+          <div class="product-tag">Bestseller</div>
+        </div>
+        <div class="product-info">
+          <div class="product-title">Dream State Mug</div>
+          <div class="product-meta">by River Cloud · Home</div>
+          <div class="product-footer">
+            <div class="product-price">$22</div>
+            <button class="btn-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Artists -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">Featured Artists</div>
+      <div class="section-link">Discover All →</div>
+    </div>
+    <div class="artist-grid">
+      <div class="artist-card">
+        <div class="artist-header">
+          <div class="artist-avatar">LV</div>
+          <div>
+            <div class="artist-name">Luna Voss</div>
+            <div class="artist-handle">@lunavoss</div>
+          </div>
+        </div>
+        <div class="artist-stats">
+          <div class="artist-stat">
+            <div class="artist-stat-value">12.4K</div>
+            <div class="artist-stat-label">Followers</div>
+          </div>
+          <div class="artist-stat">
+            <div class="artist-stat-value">234</div>
+            <div class="artist-stat-label">Sales</div>
+          </div>
+          <div class="artist-stat">
+            <div class="artist-style">Surrealism</div>
+            <div class="artist-stat-label">Style</div>
+          </div>
+        </div>
+        <button class="btn-follow">Follow Artist</button>
+      </div>
+      <div class="artist-card">
+        <div class="artist-header">
+          <div class="artist-avatar">KM</div>
+          <div>
+            <div class="artist-name">Kai Mercer</div>
+            <div class="artist-handle">@kaimercer</div>
+          </div>
+        </div>
+        <div class="artist-stats">
+          <div class="artist-stat">
+            <div class="artist-stat-value">8.9K</div>
+            <div class="artist-stat-label">Followers</div>
+          </div>
+          <div class="artist-stat">
+            <div class="artist-stat-value">189</div>
+            <div class="artist-stat-label">Sales</div>
+          </div>
+          <div class="artist-stat">
+            <div class="artist-style">Abstract</div>
+            <div class="artist-stat-label">Style</div>
+          </div>
+        </div>
+        <button class="btn-follow">Follow Artist</button>
+      </div>
+      <div class="artist-card">
+        <div class="artist-header">
+          <div class="artist-avatar">ZO</div>
+          <div>
+            <div class="artist-name">Zara Osei</div>
+            <div class="artist-handle">@zaraosei</div>
+          </div>
+        </div>
+        <div class="artist-stats">
+          <div class="artist-stat">
+            <div class="artist-stat-value">21.1K</div>
+            <div class="artist-stat-label">Followers</div>
+          </div>
+          <div class="artist-stat">
+            <div class="artist-stat-value">512</div>
+            <div class="artist-stat-label">Sales</div>
+          </div>
+          <div class="artist-stat">
+            <div class="artist-style">Afrofuturism</div>
+            <div class="artist-stat-label">Style</div>
+          </div>
+        </div>
+        <button class="btn-follow">Follow Artist</button>
+      </div>
+      <div class="artist-card">
+        <div class="artist-header">
+          <div class="artist-avatar">RC</div>
+          <div>
+            <div class="artist-name">River Cloud</div>
+            <div class="artist-handle">@rivercloud</div>
+          </div>
+        </div>
+        <div class="artist-stats">
+          <div class="artist-stat">
+            <div class="artist-stat-value">5.3K</div>
+            <div class="artist-stat-label">Followers</div>
+          </div>
+          <div class="artist-stat">
+            <div class="artist-stat-value">97</div>
+            <div class="artist-stat-label">Sales</div>
+          </div>
+          <div class="artist-stat">
+            <div class="artist-style">Dreamcore</div>
+            <div class="artist-stat-label">Style</div>
+          </div>
+        </div>
+        <button class="btn-follow">Follow Artist</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Form -->
+  <div class="section">
+    <div style="max-width: 600px; margin: 0 auto; background: rgba(124, 92, 252, 0.07); border: 1px solid rgba(124, 92, 252, 0.2); border-radius: 20px; padding: 40px;">
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 32px; color: var(--text); margin-bottom: 12px; text-align: center;">Get in Touch</h2>
+      <p style="text-align: center; color: var(--muted); margin-bottom: 32px;">Have questions? Want to partner? We'd love to hear from you.</p>
+      
+      <form name="contact" method="POST" data-netlify="true" onsubmit="handleContactSubmit(event)">
+        <input type="hidden" name="form-name" value="contact">
+        <div style="margin-bottom: 16px;">
+          <input type="text" name="name" placeholder="Your Name" required style="width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; color: var(--text); font-size: 14px; outline: none;">
+        </div>
+        <div style="margin-bottom: 16px;">
+          <input type="email" name="email" placeholder="Your Email" required style="width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; color: var(--text); font-size: 14px; outline: none;">
+        </div>
+        <div style="margin-bottom: 16px;">
+          <textarea name="message" placeholder="Your Message" required rows="5" style="width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; color: var(--text); font-size: 14px; outline: none; resize: vertical; font-family: 'DM Sans', sans-serif;"></textarea>
+        </div>
+        <button type="submit" style="width: 100%; background: linear-gradient(135deg, var(--accent), #5B3FDB); border: none; border-radius: 12px; padding: 14px; color: #fff; font-size: 15px; font-weight: 600; cursor: pointer;">Send Message</button>
+        <div class="form-success" id="contact-success" style="margin-top: 16px;">✨ Message sent! We'll get back to you soon.</div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Dreamscape</h4>
+        <a href="#about">About Us</a>
+        <a href="#blog">Blog</a>
+        <a href="#careers">Careers</a>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#api">API Docs</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="#discord">Discord</a>
+        <a href="#twitter">Twitter</a>
+        <a href="#instagram">Instagram</a>
+      </div>
+      <div class="footer-section">
+        <h4>Support</h4>
+        <a href="#help">Help Center</a>
+        <a href="#contact">Contact</a>
+        <a href="#terms">Terms of Service</a>
+        <a href="#privacy">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Dreamscape. All rights reserved. Built for artists, by artists.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Waitlist form handler
+    function handleWaitlistSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+      
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      })
+      .then(() => {
+        document.getElementById('waitlist-success').style.display = 'block';
+        form.reset();
+        
+        // Track with Google Analytics
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'waitlist_signup', {
+            'event_category': 'engagement',
+            'event_label': 'Waitlist Form'
+          });
+        }
+      })
+      .catch(error => console.error('Error:', error));
+    }
+
+    // Contact form handler
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+      
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      })
+      .then(() => {
+        document.getElementById('contact-success').style.display = 'block';
+        form.reset();
+        
+        // Track with Google Analytics
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'contact_form_submit', {
+            'event_category': 'engagement',
+            'event_label': 'Contact Form'
+          });
+        }
+      })
+      .catch(error => console.error('Error:', error));
+    }
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
