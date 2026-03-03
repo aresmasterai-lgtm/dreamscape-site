@@ -43,6 +43,70 @@
       color: var(--text);
       font-family: 'DM Sans', sans-serif;
       min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Starfield Background */
+    #starfield {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Nebula Effects */
+    .nebula {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 0;
+      animation: floatNebula 30s ease-in-out infinite;
+    }
+
+    .nebula-1 {
+      top: -10%;
+      right: -5%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(124, 92, 252, 0.4), transparent);
+      animation-delay: 0s;
+    }
+
+    .nebula-2 {
+      bottom: -10%;
+      left: -5%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0, 212, 170, 0.3), transparent);
+      animation-delay: 10s;
+    }
+
+    .nebula-3 {
+      top: 40%;
+      left: 50%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 79, 160, 0.25), transparent);
+      animation-delay: 20s;
+    }
+
+    @keyframes floatNebula {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -30px) scale(1.05); }
+      50% { transform: translate(-20px, 20px) scale(0.95); }
+      75% { transform: translate(20px, 30px) scale(1.02); }
+    }
+
+    /* Content wrapper to sit above starfield */
+    #content-wrapper {
+      position: relative;
+      z-index: 1;
     }
 
     ::-webkit-scrollbar { width: 4px; }
@@ -50,18 +114,36 @@
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
     @keyframes pulse {
-      from { transform: scale(1); opacity: 0.4; }
-      to { transform: scale(1.15); opacity: 0.7; }
+      0%, 100% { transform: scale(1); opacity: 0.4; }
+      50% { transform: scale(1.15); opacity: 0.7; }
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes glow {
-      0%, 100% { box-shadow: 0 0 20px rgba(124, 92, 252, 0.27); }
-      50% { box-shadow: 0 0 40px rgba(124, 92, 252, 0.53); }
+      0%, 100% { 
+        box-shadow: 0 0 20px rgba(124, 92, 252, 0.4), 
+                    0 0 40px rgba(124, 92, 252, 0.2),
+                    inset 0 0 20px rgba(124, 92, 252, 0.1);
+      }
+      50% { 
+        box-shadow: 0 0 30px rgba(124, 92, 252, 0.6), 
+                    0 0 60px rgba(124, 92, 252, 0.3),
+                    inset 0 0 30px rgba(124, 92, 252, 0.2);
+      }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+
+    /* Smooth transitions for all interactive elements */
+    button, a, .product-card, .artist-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     /* Navigation */
@@ -153,6 +235,29 @@
       font-weight: 600;
       cursor: pointer;
       box-shadow: 0 4px 20px rgba(124, 92, 252, 0.27);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.4s;
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 30px rgba(124, 92, 252, 0.4),
+                  0 0 40px rgba(124, 92, 252, 0.2);
+      transform: translateY(-1px);
     }
 
     .user-avatar {
@@ -201,10 +306,17 @@
     }
 
     .gradient-text {
-      background: linear-gradient(135deg, var(--accent), var(--teal));
+      background: linear-gradient(135deg, var(--accent), var(--teal), var(--pink), var(--accent));
+      background-size: 300% 300%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      animation: gradientShift 8s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
 
     .hero p {
@@ -234,6 +346,29 @@
       font-weight: 600;
       cursor: pointer;
       box-shadow: 0 8px 30px rgba(124, 92, 252, 0.33);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-hero-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-hero-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-hero-primary:hover {
+      box-shadow: 0 12px 40px rgba(124, 92, 252, 0.5),
+                  0 0 60px rgba(124, 92, 252, 0.3);
+      transform: translateY(-2px);
     }
 
     .btn-hero-secondary {
@@ -428,9 +563,11 @@
     }
 
     .product-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(124, 92, 252, 0.33);
-      box-shadow: 0 16px 32px rgba(124, 92, 252, 0.13);
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(124, 92, 252, 0.6);
+      box-shadow: 0 20px 40px rgba(124, 92, 252, 0.25),
+                  0 0 60px rgba(124, 92, 252, 0.15),
+                  inset 0 0 20px rgba(124, 92, 252, 0.05);
     }
 
     .product-image {
@@ -533,9 +670,11 @@
 
     .artist-card:hover {
       background: var(--surface-alt);
-      border-color: rgba(124, 92, 252, 0.4);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(124, 92, 252, 0.13);
+      border-color: rgba(124, 92, 252, 0.6);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 24px 48px rgba(124, 92, 252, 0.2),
+                  0 0 80px rgba(124, 92, 252, 0.15),
+                  inset 0 0 30px rgba(124, 92, 252, 0.05);
     }
 
     .artist-header {
@@ -675,6 +814,17 @@
   </style>
 </head>
 <body>
+
+  <!-- Starfield Background -->
+  <canvas id="starfield"></canvas>
+
+  <!-- Nebula Effects -->
+  <div class="nebula nebula-1"></div>
+  <div class="nebula nebula-2"></div>
+  <div class="nebula nebula-3"></div>
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper">
 
   <!-- Navigation -->
   <nav>
@@ -982,7 +1132,92 @@
     </div>
   </footer>
 
+  </div><!-- End Content Wrapper -->
+
   <script>
+    // Starfield Animation
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d');
+    
+    // Set canvas size
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    // Create stars
+    const stars = [];
+    const starCount = 200;
+    
+    class Star {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2;
+        this.speedX = (Math.random() - 0.5) * 0.2;
+        this.speedY = (Math.random() - 0.5) * 0.2;
+        this.opacity = Math.random() * 0.5 + 0.3;
+        this.twinkleSpeed = Math.random() * 0.02 + 0.01;
+        this.twinkleDirection = 1;
+      }
+      
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        
+        // Twinkle effect
+        this.opacity += this.twinkleSpeed * this.twinkleDirection;
+        if (this.opacity >= 0.8 || this.opacity <= 0.3) {
+          this.twinkleDirection *= -1;
+        }
+        
+        // Wrap around screen
+        if (this.x < 0) this.x = canvas.width;
+        if (this.x > canvas.width) this.x = 0;
+        if (this.y < 0) this.y = canvas.height;
+        if (this.y > canvas.height) this.y = 0;
+      }
+      
+      draw() {
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Add glow to larger stars
+        if (this.size > 1.5) {
+          const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 3);
+          gradient.addColorStop(0, `rgba(124, 92, 252, ${this.opacity * 0.3})`);
+          gradient.addColorStop(1, 'transparent');
+          ctx.fillStyle = gradient;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    }
+    
+    // Initialize stars
+    for (let i = 0; i < starCount; i++) {
+      stars.push(new Star());
+    }
+    
+    // Animation loop
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      stars.forEach(star => {
+        star.update();
+        star.draw();
+      });
+      
+      requestAnimationFrame(animate);
+    }
+    
+    animate();
+
     // Smooth scroll for internal links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
