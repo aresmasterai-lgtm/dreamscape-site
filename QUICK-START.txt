@@ -1,0 +1,120 @@
+═══════════════════════════════════════════════════════════════
+   🚀 DREAMSCAPE - QUICK START GUIDE
+═══════════════════════════════════════════════════════════════
+
+📂 IMPORTANT FILES (In GitHub Repo):
+
+1. DREAMSCAPE-BUILD-CHECKLIST.md  ← Complete roadmap (Phases 1-3)
+2. WORKING-WITH-CLAUDE.md         ← How to work with Claude AI
+3. index.html                     ← Your live site
+
+═══════════════════════════════════════════════════════════════
+
+✅ WHAT'S DONE:
+
+- Landing page: https://trydreamscape.com
+- GitHub: github.com/aresmasterai-lgtm/dreamscape-site
+- Netlify: Auto-deploys on git push
+- Forms working (waitlist + contact)
+- Supabase account created
+
+═══════════════════════════════════════════════════════════════
+
+🎯 NEXT STEP: Phase 1 - MVP Foundation
+
+Start with:
+1. Set up Supabase database (artworks + products tables)
+2. Build authentication (signup/login pages)
+3. Create AI art generation function
+4. Integrate Printful API
+
+═══════════════════════════════════════════════════════════════
+
+💬 HOW TO USE CLAUDE:
+
+When away from home:
+1. Go to claude.ai or use Claude app
+2. Say: "I'm building Dreamscape, an AI art marketplace"
+3. Share: "I'm on Phase X.X from my checklist"
+4. Ask: Specific questions about code/features
+
+Example:
+"I'm building Dreamscape. I'm on Phase 1.1 (Backend Setup).
+Help me create the Supabase SQL schema for the artworks table."
+
+═══════════════════════════════════════════════════════════════
+
+🔑 API KEYS YOU'LL NEED:
+
+□ Supabase (URL + Keys) - From supabase.com dashboard
+□ Printful API Key - From printful.com/dashboard/api
+□ Gemini API Key - From ai.google.dev
+□ Stripe Keys - From stripe.com (Phase 2)
+
+⚠️ Store secrets in Supabase:
+   supabase secrets set API_KEY=your_key
+
+═══════════════════════════════════════════════════════════════
+
+📱 USEFUL COMMANDS:
+
+Git (Deploy changes):
+  git add .
+  git commit -m "What changed"
+  git push
+
+Supabase:
+  supabase login
+  supabase functions new my-function
+  supabase functions deploy my-function
+
+═══════════════════════════════════════════════════════════════
+
+📊 PROJECT PHASES:
+
+Phase 1 (Weeks 1-2): MVP
+- User accounts
+- AI art generation
+- Printful mockup preview
+- Basic dashboard
+
+Phase 2 (Weeks 3-4): Core Features
+- Public marketplace
+- Artist profiles
+- Community channels
+- Shopping cart & checkout
+
+Phase 3 (Weeks 5-8): Growth
+- Search & discovery
+- Advanced AI features
+- Analytics
+- Marketing tools
+
+═══════════════════════════════════════════════════════════════
+
+🆘 IF STUCK:
+
+1. Check DREAMSCAPE-BUILD-CHECKLIST.md for detailed steps
+2. Read WORKING-WITH-CLAUDE.md for tips
+3. Ask Claude specific questions with context
+4. Check Supabase Discord or Printful support
+
+═══════════════════════════════════════════════════════════════
+
+🎯 PHASE 1 GOALS:
+
+□ 100 users signed up
+□ 50 AI artworks generated
+□ 10 products created
+□ All core flows working
+
+═══════════════════════════════════════════════════════════════
+
+📍 CURRENT STATUS: Phase 0 Complete → Starting Phase 1
+
+═══════════════════════════════════════════════════════════════
+
+Good luck building! 🌟
+
+Access your files:
+→ github.com/aresmasterai-lgtm/dreamscape-site
